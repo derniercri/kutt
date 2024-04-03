@@ -148,5 +148,8 @@
       "react-dom": "*",
       "d3-color": "*"
     }
+  },
+  "engines": {
+    "node": "^12"
   }
 }
