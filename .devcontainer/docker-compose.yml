@@ -19,12 +19,17 @@ services:
     command: sleep infinity
 
     # Runs app on the same network as the database container
-    network_mode: service:postgres
+    networks:
+    - kutt_network
 
   redis:
     image: redis:6.0-alpine
     volumes:
       - redis_data:/data
+    networks:
+    - kutt_network
+    ports:
+    - "6379:6379"
 
   postgres:
     image: postgres:12-alpine
@@ -33,7 +38,14 @@ services:
       POSTGRES_DB: kutt
       POSTGRES_HOST_AUTH_METHOD: trust
     volumes:
-      - postgres_data:/var/lib/postgresql/data
+    - postgres_data:/var/lib/postgresql/data
+    ports:
+        - "5432:5432"
+    networks:
+    - kutt_network
+
+networks:
+  kutt_network:
 
 volumes:
   redis_data:
