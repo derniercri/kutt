@@ -1,3 +1,4 @@
+import * as dotenv from "dotenv";
 import { cleanEnv, num, str, bool, url, EnvMissingError } from "envalid";
 import reporter from "envalid/src/reporter";
 
