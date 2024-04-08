@@ -3,6 +3,7 @@ import Redis from "ioredis";
 import env from "./env";
 
 const client = new Redis({
+  url: env.REDIS_URL,
   host: env.REDIS_HOST,
   port: env.REDIS_PORT,
   db: env.REDIS_DB,
