@@ -1,4 +1,5 @@
-const { parsed: localEnv } = require("dotenv").config();
+import dotenv from 'dotenv'
+const { parsed: localEnv } = dotenv.config();
 
 module.exports = {
   publicRuntimeConfig: {
