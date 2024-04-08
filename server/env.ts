@@ -1,6 +1,5 @@
 import * as dotenv from "dotenv";
 import { cleanEnv, num, str, bool, url, EnvMissingError } from "envalid";
-import reporter from "envalid/src/reporter";
 
 dotenv.config();
 
@@ -54,7 +53,6 @@ const env = cleanEnv(process.env, {
     if (errors['REDIS_URL'] instanceof EnvMissingError) {
       delete errors['REDIS_URL'];
     }
-    reporter({errors, env});
   }
 });
 

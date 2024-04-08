@@ -2,13 +2,7 @@ import Redis from "ioredis";
 
 import env from "./env";
 
-const client = new Redis({
-  url: env.REDIS_URL,
-  host: env.REDIS_HOST,
-  port: env.REDIS_PORT,
-  db: env.REDIS_DB,
-  ...(env.REDIS_PASSWORD && { password: env.REDIS_PASSWORD })
-});
+const client = new Redis(env.REDIS_URL);
 
 export default client;
 
