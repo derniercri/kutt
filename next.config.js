@@ -1,6 +1,6 @@
 const { parsed: localEnv } = require("dotenv").config();
 
-export default {
+module.exports = {
   publicRuntimeConfig: {
     CONTACT_EMAIL: localEnv && localEnv.CONTACT_EMAIL,
     SITE_NAME: localEnv && localEnv.SITE_NAME,
