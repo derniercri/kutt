@@ -1,5 +1,4 @@
-import dotenv from 'dotenv'
-const { parsed: localEnv } = dotenv.config();
+const { parsed: localEnv } = require("dotenv").config();
 
 export default {
   publicRuntimeConfig: {
