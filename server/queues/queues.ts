@@ -11,7 +11,7 @@ const redis = env.REDIS_URL || {
 
 const removeJob = job => job.remove();
 
-export const visit = new Queue("visit", { redis });
+export const visit = new Queue("visit", redis);
 
 visit.clean(5000, "completed");
 
