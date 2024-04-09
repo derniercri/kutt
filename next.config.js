@@ -1,7 +1,7 @@
 import dotenv from 'dotenv'
 const { parsed: localEnv } = dotenv.config();
 
-module.exports = {
+export default {
   publicRuntimeConfig: {
     CONTACT_EMAIL: localEnv && localEnv.CONTACT_EMAIL,
     SITE_NAME: localEnv && localEnv.SITE_NAME,
