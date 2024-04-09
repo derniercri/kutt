@@ -10,5 +10,10 @@
       "ghcr.io/devcontainers/features/node:1": {
           "version": "v12.22.12"
       }
-  }
+  },
+  "forwardPorts": [
+    3000,
+    "postgres:5432",
+    "redis:6379"
+  ]
 }
