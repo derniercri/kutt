@@ -301,6 +301,8 @@ export const signup = [
     .exists({ checkFalsy: true, checkNull: true })
     .trim()
     .isEmail()
+    .contains('@derniercri.io')
+    .withMessage("Must be @derniercri.io")
     .isLength({ min: 0, max: 255 })
     .withMessage("Email length must be max 255.")
     .custom(async (value, { req }) => {
