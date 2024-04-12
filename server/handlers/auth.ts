@@ -87,7 +87,7 @@ export const recaptcha: Handler = async (req, res, next) => {
   if (!env.RECAPTCHA_SECRET_KEY) return next();
 
   const isReCaptchaValid = await axios({
-    method: "post",
+  method: "post",
     url: "https://www.google.com/recaptcha/api/siteverify",
     headers: {
       "Content-type": "application/x-www-form-urlencoded"
@@ -99,7 +99,7 @@ export const recaptcha: Handler = async (req, res, next) => {
     }
   });
 
-  if (!isReCaptchaValid.data.success) {
+  if (!(isReCaptchaValid.data as any).success) {
     throw new CustomError("reCAPTCHA is not valid. Try again.", 401);
   }
 

@@ -1,0 +1,19 @@
+{
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "app",
+  "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+  "postCreateCommand": "git config --global --add safe.directory ${containerWorkspaceFolder}",
+  "features": {
+      "ghcr.io/audacioustux/devcontainers/taskfile:1": {
+          "version": "latest"
+      },
+      "ghcr.io/devcontainers/features/node:1": {
+          "version": "v12.22.12"
+      }
+  },
+  "forwardPorts": [
+    3000,
+    "postgres:5432",
+    "redis:6379"
+  ]
+}

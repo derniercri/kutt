@@ -1,0 +1,53 @@
+version: "3"
+
+services:
+  app:
+    build:
+      context: ..
+      dockerfile: .devcontainer/Dockerfile
+
+    volumes:
+      - $PWD:/workspaces/kutt:cached
+      - shellhistory:/commandhistory
+    environment:
+      DB_NAME: kutt
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_USER: user
+
+    # Overrides default command so things don't shut down after the process ends.
+    command: sleep infinity
+
+    # Runs app on the same network as the database container
+    networks:
+    - kutt_network
+
+  redis:
+    image: redis:6.0-alpine
+    volumes:
+      - redis_data:/data
+    networks:
+    - kutt_network
+    ports:
+    - "6379:6379"
+
+  postgres:
+    image: postgres:12-alpine
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_DB: kutt
+      POSTGRES_HOST_AUTH_METHOD: trust
+    volumes:
+    - postgres_data:/var/lib/postgresql/data
+    ports:
+    - "5432:5432"
+    networks:
+    - kutt_network
+
+networks:
+  kutt_network:
+
+volumes:
+  redis_data:
+  postgres_data:
+  shellhistory:
